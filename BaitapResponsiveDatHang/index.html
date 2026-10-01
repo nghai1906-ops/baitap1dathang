@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đặt hàng</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>ĐẶT HÀNG</h1>
+    <div class="product">
+        <div class="img-container">
+            <span class="badge-new">NEW</span>
+            <img src="hinhanhrp/anhsanpham1.webp" alt="Áo thun cao cấp nam">
+        </div>
+        <div class="info">
+            <h2>Áo thun nam cao cấp</h2>
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.9 / 5 - 728 đánh giá)</span>
+            </div>
+            <p class="price">599.000 đ</p>
+            <p class="description">
+                Áo thun nam thiết kế tối giản mang phong cách hiện đại, trẻ trung. 
+                Chất liệu vải cotton tự nhiên cao cấp 100% siêu mềm mại, 
+                khả năng thấm hút mồ hôi cực tốt giúp cơ thể luôn khô thoáng suốt cả ngày dài. 
+                Đường may tỉ mỉ, chuẩn xác, không bai dão hay xù lông sau nhiều lần giặt. 
+                Phù hợp mặc đi chơi, dạo phố hoặc phối đồ linh hoạt với nhiều trang phục khác nhau.
+            </p>
+            <div class="size-selection">
+                <label>Kích thước:</label>
+                <div class="sizes">
+                    <button type="button" class="size-btn" onclick="selectSize(this)">S</button>
+                    <button type="button" class="size-btn active" onclick="selectSize(this)">M</button>
+                    <button type="button" class="size-btn" onclick="selectSize(this)">L</button>
+                    <button type="button" class="size-btn" onclick="selectSize(this)">XL</button>
+                </div>
+            </div>
+            <div class="sub-actions">
+                <button type="button" id="cartBtn" class="cart-btn" onclick="handleAddToCart()">THÊM GIỎ HÀNG</button>
+                <button type="button" class="wishlist-btn" onclick="toggleHeart(this)">Yêu thích</button>
+            </div>
+            <p id="cartSuccessMessage" class="success-msg cart-msg">Đã thêm vào giỏ hàng thành công!</p>
+            <button type="button" id="orderBtn" class="order-main-btn" onclick="handleOrder()">ĐẶT HÀNG</button>
+            <p id="successMessage" class="success-msg">Đặt hàng thành công!</p>
+        </div>
+    </div>
+</div>
+<script>
+    function selectSize(btn) {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+    function toggleHeart(btn) {
+        btn.classList.toggle('active');
+        if(btn.classList.contains('active')) {
+            btn.innerHTML = "Đã thích";
+            btn.style.color = "#e74c3c";
+            btn.style.borderColor = "#e74c3c";
+        } else {
+            btn.innerHTML = "Yêu thích";
+            btn.style.color = "#333";
+            btn.style.borderColor = "#dcdde1";
+        }
+    }
+    function handleAddToCart() {
+        const cartBtn = document.getElementById('cartBtn');
+        cartBtn.innerText = "ĐÃ THÊM VÀO GIỎ";
+        cartBtn.classList.add('clicked');
+        cartBtn.disabled = true;
+        document.getElementById('cartSuccessMessage').style.display = 'block';
+    }
+    function handleOrder() {
+        const btn = document.getElementById('orderBtn');
+        btn.innerText = "ĐÃ ĐẶT HÀNG";
+        btn.classList.add('clicked');
+        btn.disabled = true;
+        document.getElementById('successMessage').style.display = 'block';
+    }
+</script>
+</body>
+</html>
